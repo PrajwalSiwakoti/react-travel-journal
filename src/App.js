@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header.jsx";
+import Entry from "./components/Entry.jsx";
+import places from "./data.js";
 
 function App() {
+  const heroes = ["superman", "batman", "spiderman"];
+  const entryElements = places.map((place) => {
+    return (
+      <Entry
+        key={place.id}
+        mainImage={{ imgSrc: place.img.src, alt: place.alt }}
+        country={place.country}
+        googleMapsUrl={place.googleMapsLink}
+        title={place.title}
+        dates={place.dates}
+        description={place.description}
+      />
+    );
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      {entryElements} //this is the same as the code below, but using a variable is cleaner and good practice
+      {places.map((place) => {
+        return (
+          <Entry
+            key={place.id}
+            mainImage={{ imgSrc: place.img.src, alt: place.title }}
+            country={place.country}
+            googleMapsUrl={place.googleMapsLink}
+            title={place.title}
+            dates={place.dates}
+            description={place.description}
+          />
+        );
+      })}
+      {heroes.map((hero) => (
+        <h1>{hero}</h1>
+      ))}
+    </>
   );
 }
 
