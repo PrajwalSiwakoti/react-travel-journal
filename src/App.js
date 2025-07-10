@@ -21,7 +21,8 @@ function App() {
   return (
     <>
       <Header />
-      {entryElements} //this is the same as the code below, but using a variable is cleaner and good practice
+      {entryElements}
+      {/* this is the same as the code below, but using a variable is cleaner and good practice */}
       {places.map((place) => {
         return (
           <Entry
